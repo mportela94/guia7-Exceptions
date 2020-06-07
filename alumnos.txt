@@ -1,0 +1,4 @@
+Alumno: Matias Portela - Nacionalidad: ARGENTINA
+Alumno: Santiago Alvarez - Nacionalidad: CHILENA
+Alumno: Tommy Jones - Nacionalidad: ESTADOUNIDENSE
+Alumno: Roberto Leuco - Nacionalidad: URUGUAYA
