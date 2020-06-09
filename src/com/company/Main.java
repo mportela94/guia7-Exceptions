@@ -5,9 +5,10 @@ import com.company.colegio.Colegio;
 import com.company.colegio.Nacionalidad;
 import com.company.guessNumber.Game;
 import com.company.guessNumber.RandomNumber;
+import com.google.gson.Gson;
 
 import javax.swing.*;
-import java.io.File;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
@@ -44,27 +45,36 @@ public class Main {
         colegio.agregarAlumno(alumno7);
 
 
-        System.out.println("------------------------------------");
-        colegio.verNacionalidad(Nacionalidad.ARGENTINA.toString());
-        System.out.println("------------------------------------");
-        colegio.cuantos();
-        System.out.println("------------------------------------");
-        colegio.mostrarAlumnos();
-        System.out.println("");
-        colegio.borrarAlumno(alumno7);  //encuentra y borra
-        System.out.println("");
-        colegio.mostrarAlumnos();
-        //colegio.borrarAlumno(alumno2);  //no lo encuentra y tira el exception
-        System.out.println("------------------------------------");
-        colegio.verTodos();
-        System.out.println("------------------------------------");
+//        System.out.println("------------------------------------");
+//        colegio.verNacionalidad(Nacionalidad.ARGENTINA.toString());
+//        System.out.println("------------------------------------");
+//        colegio.cuantos();
+//        System.out.println("------------------------------------");
+//        colegio.mostrarAlumnos();
+//        System.out.println("");
+//        colegio.borrarAlumno(alumno7);  //encuentra y borra
+//        System.out.println("");
+//        colegio.mostrarAlumnos();
+//        //colegio.borrarAlumno(alumno2);  //no lo encuentra y tira el exception
+//        System.out.println("------------------------------------");
+//        colegio.verTodos();
+//        System.out.println("------------------------------------");
 
         System.out.println("ARCHIVOS");
         File archivoAlumnos= new File("alumnos.txt");
 
-        colegio.crearArchivoAlumnos(archivoAlumnos);
+      //  colegio.crearArchivoAlumnos(archivoAlumnos);
         System.out.println("Lectura de Archivo");
         colegio.leerArchivoAlumnos(archivoAlumnos);
+
+        System.out.println("\nARCHIVOS JSON");
+
+        File file = new File("miOtroArchivo.json");
+
+        colegio.crearArchivoJSON(file);
+        colegio.leerArchivoJSON(file);
+
+
     }
 
 }
