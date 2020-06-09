@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -64,15 +65,26 @@ public class Main {
         File archivoAlumnos= new File("alumnos.txt");
 
       //  colegio.crearArchivoAlumnos(archivoAlumnos);
-        System.out.println("Lectura de Archivo");
+        System.out.println("Lectura de Archivo .txt");
         colegio.leerArchivoAlumnos(archivoAlumnos);
 
         System.out.println("\nARCHIVOS JSON");
+        System.out.println("Lectura de Archivo .json");
 
-        File file = new File("miOtroArchivo.json");
+        File archivoAlumnosJSON = new File("miOtroArchivo.json");
 
-        colegio.crearArchivoJSON(file);
-        colegio.leerArchivoJSON(file);
+        colegio.crearArchivoJSON(archivoAlumnosJSON);
+        colegio.leerArchivoJSON(archivoAlumnosJSON);
+
+        System.out.println("\nPASANDO JSON A UN ARRAYLIST");
+        ArrayList<Alumnos> alumnosRecuperadosDeArchivoJson= new ArrayList<>();
+        alumnosRecuperadosDeArchivoJson=colegio.jsonToArray(archivoAlumnosJSON);
+
+        for (Alumnos a : alumnosRecuperadosDeArchivoJson){
+            System.out.println(a.toString());
+        }
+
+
 
 
     }

@@ -5,6 +5,7 @@ import com.google.gson.internal.$Gson$Preconditions;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -130,6 +131,14 @@ public class Colegio {
 
                 Gson gson=new Gson();
 
+//                // convert JSON file to map
+//                Map<?, ?> map = gson.fromJson(br, Map.class);
+//
+//                // print map entries
+//                for (Map.Entry<?, ?> entry : map.entrySet()) {
+//                    System.out.println(entry.getKey() + "=" + entry.getValue());
+//                }
+
                 JsonParser parser =  new JsonParser();
                 JsonElement jsonElement = parser.parse(br); //esto retorna un jsonElement leido del buffer
                 JsonArray array = jsonElement.getAsJsonArray();
@@ -152,6 +161,34 @@ public class Colegio {
         }
     }
 
+    public ArrayList<Alumnos> jsonToArray(File archivoAlumnos){
+
+        int i=0;
+        ArrayList<Alumnos> alumnosFromJson= new ArrayList<Alumnos>();
+
+        if (archivoAlumnos.exists()) {
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(archivoAlumnos));
+
+                Gson gson=new Gson();
+
+                JsonParser parser =  new JsonParser();
+                JsonElement jsonElement = parser.parse(br); //esto retorna un jsonElement leido del buffer
+                JsonArray array = jsonElement.getAsJsonArray();
+
+                for (JsonElement element : array){
+                    Alumnos alumno=gson.fromJson(element.getAsJsonObject(), Alumnos.class);
+                    alumnosFromJson.add(alumno);
+                    i++;
+                }
+
+                br.close();
+            }catch (IOException excepcion){
+                excepcion.printStackTrace();
+            }
+        }
+        return alumnosFromJson;
+    }
 }
 
 
